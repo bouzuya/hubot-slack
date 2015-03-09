@@ -17,7 +17,7 @@ class SlackBot extends Adapter
     options =
       token: process.env.HUBOT_SLACK_TOKEN
       autoReconnect: true
-      autoMark: true
+      autoMark: JSON.parse(process.env.HUBOT_SLACK_AUTO_MARK ? 'true')
 
     return @robot.logger.error "No services token provided to Hubot" unless options.token
     return @robot.logger.error "v2 services token provided, please follow the upgrade instructions" unless (options.token.substring(0, 5) == 'xoxb-')
